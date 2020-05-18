@@ -29,6 +29,8 @@ public class StockUpdateService {
     private StockRepository stockRepository;
 
     private static String API_URL = "https://api.iextrading.com/1.0/stock/market/batch";
+    
+  //  https://sandbox.iexapis.com/stable/stock/market/batch?symbols=aapl,fb&types=quote,news,chart&range=1m&last=5&token=Tsk_bfae4c79beff45e9b0062dae38b8fd74
 
     StockUpdateService() {
         HttpClient httpClient = HttpClients.custom()
@@ -42,11 +44,20 @@ public class StockUpdateService {
     public void updateStockQuotes() {
         LOGGER.info("Updating Stock Quotes");
         try {
-            HttpResponse<JsonNode> stocksResponse = Unirest.get(API_URL)
-                    .queryString("symbols", "AAPL, FB, BK, GOOGL, AMZN, SNAP, MSFT, IBM, MS")
-                    .queryString("types", "quote")
-                    .asJson();
+            
+            
+			
+			
+			  HttpResponse<JsonNode> stocksResponse = Unirest.get(
+			  "https://sandbox.iexapis.com/stable/stock/market/batch?symbols=aapl,fb,bk,BK,GOOGL,AMZN,SNAP,MSFT,IBM,MS&types=quote&token=Tsk_bfae4c79beff45e9b0062dae38b8fd74")
+			  .asJson();
+			 
+            
+            System.out.println(stocksResponse.getBody().toString());
+          
+            
             LOGGER.debug(stocksResponse.getBody().toString());
+            
             JSONObject stocks = stocksResponse.getBody().getObject();
             Iterator keys = stocks.keys();
             while (keys.hasNext()) {

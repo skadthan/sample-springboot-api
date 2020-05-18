@@ -35,7 +35,7 @@ public class SwaggerConfig {
                 .title("Stock API")
                 .description("Sample Spring boot API")
                 .version("1.0.0")
-                .contact(new Contact("Zarin", "https://github.com/zarinlo", ""))
+                .contact(new Contact("skadthan", "https://github.com/skadthan", ""))
                 .build();
     }
 }

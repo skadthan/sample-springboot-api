@@ -37,7 +37,7 @@ jobs:
       - run: mvn clean package
 
       # build and push docker image to docker hub
-      - run: mvn clean compile jib:build -Dimage=zarinlo/springboot-api:$CIRCLE_BUILD_NUM
+      - run: mvn clean compile jib:build -Dimage=skadthan/circleci-springboot-api:$CIRCLE_BUILD_NUM
 
       # store raw contents of src code
       - store_artifacts:

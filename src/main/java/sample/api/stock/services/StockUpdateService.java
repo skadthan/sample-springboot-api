@@ -42,7 +42,7 @@ public class StockUpdateService {
 
     @Scheduled(fixedRate = 60000)
     public void updateStockQuotes() {
-        LOGGER.info("Updating Stock Quotes");
+        LOGGER.info("Updating Stock Quotes to MongoDB stocks collection");
         try {
             
             
